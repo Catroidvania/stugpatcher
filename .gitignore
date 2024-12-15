@@ -1,6 +1,5 @@
-custom/*
 app.asar
 app.asar.unpacked/*
-stug_src/*
+stugio_src/*
 app_modded.asar
 app_modded.asar.unpacked/*

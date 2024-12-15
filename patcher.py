@@ -25,14 +25,14 @@ def main():
 
     # no working asar libraries for python :/
     if not UNPACKED_DIR.exists():
-        os.system(f"npx asar extract {ASAR_PATH} {UNPACKED_DIR}")
+        os.system(f"npm exec -- asar extract {ASAR_PATH} {UNPACKED_DIR}")
 
     for pack in MOD_DIR.iterdir():
-        print("adding", pack)
-        if pack.is_dir():
+        if pack.is_dir() and not pack.stem.startswith('_'):
+            print("adding", pack.stem)
             shutil.copytree(pack, UNPACKED_DIR / 'root', dirs_exist_ok=True)
 
-    os.system(f'npx asar pack {UNPACKED_DIR} {ASAR_NEW_PATH}' + ' --unpack-dir "node_modules/{electron_deeplink,greenworks}"')
+    os.system(f'npm exec -- asar pack {UNPACKED_DIR} {ASAR_NEW_PATH}' + ' --unpack-dir "node_modules/{electron_deeplink,greenworks}"')
 
     #shutil.rmtree(UNPACKED_DIR)
 
