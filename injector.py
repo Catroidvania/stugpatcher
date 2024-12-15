@@ -4,12 +4,6 @@
 
 # script for injecting javascript into app.min.js
 
-''' payload format
-[regex]
-[mode]
-[data]
-'''
-
 import re
 import shutil
 import sys
@@ -26,6 +20,8 @@ def inject(filepath, dest):
     
     if not backup.exists():
         shutil.copy(dest, backup)
+    else:
+        restore(dest)
 
     with open(dest, "r", encoding="utf-8") as target:
         contents = target.read()
@@ -66,12 +62,12 @@ def restore(dest):
         return
     
     shutil.copy(backup, dest)
-    print("backup restored")
 
 
 def main():
     if len(sys.argv) > 1 and sys.argv[1] in ["r", "restore"]:
-        restore(UNPACKED_DIR / 'root/js/app.min.js')
+        restore(UNPACKED_DIR / 'root/js/app.min.js') 
+        print("backup restored")
     elif PAYLOADS_DIR.exists():
         inject(PAYLOADS_DIR, UNPACKED_DIR / 'root/js/app.min.js')
 
