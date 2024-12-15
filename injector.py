@@ -19,16 +19,20 @@ def inject(filepath, dest):
     contents = ""
     
     if not backup.exists():
+        print("creating backup...")
         shutil.copy(dest, backup)
     else:
+        print("resetting app.min.js...")
         restore(dest)
+
+    print()
 
     with open(dest, "r", encoding="utf-8") as target:
         contents = target.read()
         
     for f in filepath.iterdir():
 
-        print("injecting", f.stem, end="...")
+        print("injecting", f.stem)
 
         payload = {}
         with open(f, "r") as file:
@@ -40,19 +44,23 @@ def inject(filepath, dest):
         match = regex.search(contents)
 
         if not match:
-            print(f"could not match {payload["regex"]}!")
+            print(f"failed to match {payload["regex"]}!")
         else:            
-            if payload["mode"] == "inject":
+            if payload["mode"] == "after":
                 contents = contents[:match.end()] + payload["data"] + contents[match.end():]
-            elif payload["mode"] == "injectbefore":
+            elif payload["mode"] == "before":
                 contents = contents[:match.start()] + payload["data"] + contents[match.start():]
             elif payload["mode"] == "replace":
                 contents = contents[:match.start()] + payload["data"] + contents[match.end():]
-
-        print(" injected")
+            else:
+                print(f"unknown mode {payload["mode"]}")
 
     with open(dest, "w", encoding="utf-8") as target:
         target.write(contents)
+
+    print()
+    print("finished injecting")
+
 
 def restore(dest):
     backup = dest.parent / '_app.min.js'

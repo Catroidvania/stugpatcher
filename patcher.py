@@ -34,5 +34,7 @@ def main():
 
     os.system(f'npm exec -- asar pack {UNPACKED_DIR} {ASAR_NEW_PATH}' + ' --unpack-dir "node_modules/{electron_deeplink,greenworks}"')
 
+    print()
+    print("packed")
 
 if __name__ == "__main__": main()
