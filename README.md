@@ -50,13 +50,13 @@ pack_name
 
 `injector.py` is a quick n' dirty helper script that injects javascript into `app.min.js`
 
-this is more advacned stuff so make sure you have some idea of what youre doing
+this is more advanced stuff so make sure you have some idea of what youre doing
 
 ## usage
 
 1. make sure `app.asar` has been extracted properly
 2. create a `js` folder
-3. add inject files (see below for structure)
+3. add inject files (see below)
 4. run `python injector.py`
 5. run `python patcher.py` to repack the archive
 
@@ -74,15 +74,15 @@ the first line contains a regex describing where the injection should happen
 * each regex should only match once
 
 the second line describes where the code is placed relative to the regex match
-* inject places the code after the matched string
-* injectbefore places the code before the matched string
-* replace replaces the matched string
+* `inject` places the code after the matched string
+* `injectbefore` places the code before the matched string
+* `replace` replaces the matched string
 
 the rest of the file contains the code you want to add
 
 ### sidenotes
 
-* the file contents are modified in sequence so beware of adding code that might match with following regexes
+* the file contents are modified in sequence so beware of adding code that might match with other regexes
 * a backup file called `_app.min.js` is created and used to "reset" `app.min.js`
     * the backup is restored at the start of the script to avoid unwanted repeat injections
     * you can manually restore the file with `python injector.py r`
