@@ -30,7 +30,7 @@ def main():
     for pack in MOD_DIR.iterdir():
         if pack.is_dir() and not pack.stem.startswith('_'):
             print("adding", pack.stem)
-            shutil.copytree(pack, UNPACKED_DIR / 'root', dirs_exist_ok=True)
+            shutil.copytree(pack / 'assets', UNPACKED_DIR / 'root/assets', dirs_exist_ok=True)
 
     os.system(f'npm exec -- asar pack {UNPACKED_DIR} {ASAR_NEW_PATH}' + ' --unpack-dir "node_modules/{electron_deeplink,greenworks}"')
 

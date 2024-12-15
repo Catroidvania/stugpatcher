@@ -3,3 +3,5 @@ app.asar.unpacked/*
 stugio_src/*
 app_modded.asar
 app_modded.asar.unpacked/*
+js/*
+__pycache__/*
