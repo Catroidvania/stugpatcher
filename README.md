@@ -66,7 +66,7 @@ inject files are just plaintext with some information about the injection
 
 ```
 [regex]
-[inject|injectbefore|replace]
+[after|before|replace]
 [code to inject...]
 ```
 
@@ -74,8 +74,8 @@ the first line contains a regex describing where the injection should happen
 * each regex should only match once
 
 the second line describes where the code is placed relative to the regex match
-* `inject` places the code after the matched string
-* `injectbefore` places the code before the matched string
+* `after` places the code after the matched string
+* `before` places the code before the matched string
 * `replace` replaces the matched string
 
 the rest of the file contains the code you want to add

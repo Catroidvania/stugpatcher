@@ -45,15 +45,16 @@ def inject(filepath, dest):
 
         if not match:
             print(f"failed to match {payload["regex"]}!")
-        else:            
-            if payload["mode"] == "after":
-                contents = contents[:match.end()] + payload["data"] + contents[match.end():]
-            elif payload["mode"] == "before":
-                contents = contents[:match.start()] + payload["data"] + contents[match.start():]
-            elif payload["mode"] == "replace":
-                contents = contents[:match.start()] + payload["data"] + contents[match.end():]
-            else:
-                print(f"unknown mode {payload["mode"]}")
+            continue        
+  
+        if payload["mode"] == "after":
+            contents = contents[:match.end()] + payload["data"] + contents[match.end():]
+        elif payload["mode"] == "before":
+            contents = contents[:match.start()] + payload["data"] + contents[match.start():]
+        elif payload["mode"] == "replace":
+            contents = contents[:match.start()] + payload["data"] + contents[match.end():]
+        else:
+            print(f"unknown mode {payload["mode"]}")
 
     with open(dest, "w", encoding="utf-8") as target:
         target.write(contents)
