@@ -17,7 +17,7 @@ calling node scripts through the command line is pretty gross but there arent an
 # usage
 
 1. download and extract the repository contents
-2. locate your `app.asar` in steam > gear icon > manage > browse local files > resources
+2. locate your `app.asar` in stugio steam page > gear icon > manage > browse local files > resources
 3. copy `app.asar` and `app.asar.unpacked` to the folder with `patcher.py`
 4. add asset packs to `custom` folder (you might need to create this if it isnt there)
 5. run `python patcher.py`, it might take a minute or two to extract
