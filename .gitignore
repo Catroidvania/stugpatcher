@@ -5,3 +5,5 @@ app_modded.asar
 app_modded.asar.unpacked/*
 __pycache__/*
 scripts/*
+__*
+temp_/*
