@@ -9,6 +9,7 @@ this project is in very early development so use at your own risk
 * [npm/nodejs](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
 * [electron asar](https://github.com/electron/asar), install with npm
 * [python >=3.12.6](https://www.python.org/downloads/)
+* basic command line knowledge
 
 calling node scripts through the command line with python is pretty gross but there arent any working asar handling libraries for python atm :/
 
@@ -18,8 +19,9 @@ calling node scripts through the command line with python is pretty gross but th
 2. locate your `app.asar` in the stugio steam page > gear icon > manage > browse local files > resources
 3. copy `app.asar` and `app.asar.unpacked` to the folder with `stugpatcher.py`
 4. add asset packs (see below) to the `packs` folder
-5. run `python stugpatcher.py`, it might take a minute or two to extract the first time
-6. copy `app_modded.asar` back to the steam files and rename to replace the orignal `app.asar`
+5. open the command line and cd into the repository
+6. run `python stugpatcher.py` in the command line, it might take a minute or two to extract the first time
+7. copy `app_modded.asar` back to the steam files and rename to replace the orignal `app.asar`
 
 running `clean.bat` deletes `app_modded.asar`, `app_modded.asar.unpacked`, and `stugio_src`
 
