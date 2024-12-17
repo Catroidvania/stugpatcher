@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="64" height="64" tilewidth="4" tileheight="4" infinite="0" nextlayerid="15" nextobjectid="40">
+ <properties>
+  <property name="armorMod" type="float" value="0.15"/>
+  <property name="barrelLength" type="int" value="45"/>
+  <property name="damageMod" type="float" value="0.95"/>
+  <property name="engineBoostForce" type="float" value="150"/>
+  <property name="engineForce" type="float" value="100"/>
+  <property name="engineForceWithTurn" type="float" value="60"/>
+  <property name="fireForce" type="float" value="160"/>
+  <property name="mass" type="float" value="10"/>
+  <property name="name" value="Vespa 150 TAP"/>
+  <property name="reloadTime" type="int" value="5200"/>
+  <property name="reverseMod" type="float" value="0.7"/>
+  <property name="turnForce" type="float" value="0.2"/>
+  <property name="turnForceWithEngine" type="float" value="0.15"/>
+  <property name="turretRotationLimit" type="float" value="0.2"/>
+  <property name="turretSpeed" type="float" value="0.085"/>
+  <property name="type" value="light"/>
+ </properties>
+ <tileset firstgid="1" name="parts" tilewidth="256" tileheight="256" tilecount="3" columns="0">
+  <grid orientation="orthogonal" width="1" height="1"/>
+  <tile id="1">
+   <image source="vespa_hull.webp" width="128" height="256"/>
+  </tile>
+  <tile id="5">
+   <image source="../wheel.webp"/>
+  </tile>
+  <tile id="6">
+   <image source="vespa_turret.webp" width="128" height="256"/>
+  </tile>
+ </tileset>
+ <objectgroup id="14" name="Wheels" offsetx="0" offsety="15">
+  <properties>
+   <property name="canTurn" type="bool" value="false"/>
+  </properties>
+  <object id="33" name="Wheel" gid="6" x="120.13" y="142" width="9.8182" height="32"/>
+ </objectgroup>
+ <objectgroup id="10" name="Wheels" locked="1" offsetx="-4" offsety="-63">
+  <properties>
+   <property name="canTurn" type="bool" value="true"/>
+  </properties>
+  <object id="22" name="Wheel" gid="6" x="124.99" y="136.09" width="9.27" height="34"/>
+ </objectgroup>
+ <objectgroup id="2" name="Hull">
+  <object id="24" name="Hull" gid="2" x="64" y="256" width="128" height="256"/>
+  <object id="38" name="Hitbox" x="125" y="43">
+   <properties>
+    <property name="face0" value="front"/>
+    <property name="face1" value="side"/>
+    <property name="face10" value="front"/>
+    <property name="face11" value="side"/>
+    <property name="face12" value="front"/>
+    <property name="face2" value="front"/>
+    <property name="face3" value="side"/>
+    <property name="face4" value="rear"/>
+    <property name="face5" value="rear"/>
+    <property name="face6" value="rear"/>
+    <property name="face7" value="rear"/>
+    <property name="face8" value="rear"/>
+    <property name="face9" value="side"/>
+   </properties>
+   <polygon points="0,0 5.125,5.25 5.375,23 20.625,23 18.375,55.75 26.5,55.625 27,119.25 -27.25,117.625 -26.5,56.875 -18.125,56.875 -20.125,22.875 -4.875,23 -4.75,5.125"/>
+  </object>
+  <object id="39" name="Terrain Hitbox" x="98.7273" y="7.09091">
+   <properties>
+    <property name="useOnlyAsTerrainHitbox" type="bool" value="true"/>
+   </properties>
+   <polygon points="6.66667,38.6667 -1.63636,92.3636 -0.909091,155.818 9.27273,158.727 52.9091,154.727 53.0909,91.2727 46.9091,38.3636 41.8182,33.2727 14,32.3636"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="8" name="Turret" locked="1" offsetx="0" offsety="-24">
+  <object id="21" name="Turret" gid="7" x="9" y="241" width="242" height="308"/>
+ </objectgroup>
+</map>

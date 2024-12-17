@@ -63,8 +63,8 @@ def main():
                                 print("  +", file.stem)
                                 add_vehicle_data(file, APP_MIN_JS_PATH)
 
-    # load scripts
-    if SCRIPT_DIR.exists():
+    # load scripts, disabled for now
+    if SCRIPT_DIR.exists() and False:
         print()
         print("parsing scripts...")
         print()

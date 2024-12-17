@@ -38,11 +38,15 @@ pack_name
     │   ├── emote_heart.webp
     │   └── emote_hello.webp
     ├── vehicles
-    │   └── light_tank
-    │       └── light_tank_thumbnail.webp
+    │   └── my_tank
+    │       ├── my_tank.tmx
+    │       └── my_tank_hull.webp
+    ├── research_tree_japan.tmx
     ├── crosshair.webp
     └── kill.ogg
 ```
+
+also see `example_pack`
 
 ### sidenotes
 
@@ -50,36 +54,26 @@ pack_name
 * packs are copied in succession so if a file is replaced in two packs, itll end up as whichever was added last
 * asset packs with names starting with an underscore will be ignored
 
-# modifying app.min.js
+# adding custom vehicles
 
-the script can also inject javascript into `app.min.js` for more involved modding
+vehicle and research tree `.tmx` files are automatically injected into `app.min.js`
 
-## usage
+this is a pretty jank process so be careful about some things
 
-1. create a `scripts` folder
-2. add mod files (see below)
-3. run `python stugpatcher.py`
+### some things
 
-## creating mod files
-
-mod files are just plaintext with some information about where and what to inject
-
-```
-[regex]
-[after|before|replace]
-[code to inject...]
-```
-
-the first line contains a regex describing where the injection should happen
-* if multiple lines would match, the injection only happens at the first match
-
-the second line describes where the code is placed relative to the regex match
-* `after` places the code after the matched string
-* `before` places the code before the matched string
-* `replace` replaces the matched string
-
-the rest of the file contains the code you want to add
-
-### sidenotes
-
-* `stugio_src` is the unmodified contents of `app.asar`, its meant to serve as a clean base for successive patches and to save on extraction time so its not meant to be modified
+* the vehicles folder and tmx file should have the same name
+* you can use [Tiled](https://www.mapeditor.org/) to edit tmx files
+    * if you want to edit the vehicle properties go to the toolbar > Map > Map Properties
+    * remember to move the object and not just the image, otherwise turrets and wheels will rotate incorrectly
+* because regex is used to find where to put the code, the vehicle folder and tmx names should only contain letters and underscores
+    * the display name of the vehicle is a property in the vehicle tmx file
+* replacing an existing vehicles tmx changes the stats in test drive but will have no effect in multiplayer
+* do not click resaerch on custom vehicles it will freeze your game
+* you need to make a custom research tree to access your vehicle, click on one of the ? tabs to access it
+* the valid research trees are: `research_tree_britain.tmx`, `research_tree_france.tmx`, and `research_tree_japan.tmx`
+    * these are the three currently unused trees that exist in the code but have disabled tabs and no associated data
+    * if you try to create a tree that isnt one of those three it wont be accessible
+* trees in other packs will overwrite previous ones so keep that in mind
+* you can modify existing research trees but this has a very high chance of preventing your game from starting
+    * it seems to have to do adding vehicles you dont have fully researched, such as custom vehicles

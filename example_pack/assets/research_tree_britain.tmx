@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="128" height="64" tilewidth="16" tileheight="16" infinite="0" nextlayerid="5" nextobjectid="158">
+ <tileset firstgid="1" name="tanks" tilewidth="256" tileheight="256" tilecount="3" columns="0">
+  <grid orientation="orthogonal" width="1" height="1"/>
+  <tile id="0">
+   <image source="vehicles/flakpanzer/flakpanzer_thumbnail.webp"/>
+  </tile>
+  <tile id="1">
+   <image source="white.webp"/>
+  </tile>
+  <tile id="99">
+   <image source="vehicles/kaboom/kaboom_thumbnail.webp"/>
+  </tile>
+ </tileset>
+ <objectgroup id="4" name="Graphics"/>
+ <objectgroup id="2" name="Vehicles">
+  <object id="157" name="vespa" gid="1" x="15" y="145" width="128" height="128">
+   <properties>
+    <property name="xp" type="int" value="0"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>
